@@ -1,8 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, request
-from flask_request_params import bind_request_params
 from flask_cors import CORS, cross_origin
-import time
-from datetime import datetime
 import qrcode
 import base64
 from io import BytesIO
