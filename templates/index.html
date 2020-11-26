@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sojujoa</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .logo {
+            text-align: center;
+        }
+        .beverage-container {
+            display: inline;
+        }
+
+        .beverage {
+            display: block;
+            width: 40%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .radio {
+            vertical-align: middle;
+        }
+
+        .room {
+            display: block;
+            width: 25%;      
+            margin: 0 auto;      
+            
+        }
+    </style>
+</head>
+<body>
+    <h2 class="logo">Soju joa</h2>
+    <form method="POST" action="/order">
+    <div class="beverage-container">
+        <div class="beverage">
+            <div class="aaaa">
+                {% for n in beverage %}
+                <div style="margin-left: 80px;">                    
+                    <img class={{n}} src="https://choicafe.s3.ap-northeast-2.amazonaws.com/{{n}}.jpg" width="100"> 
+                    <input type="radio" name="beverages" value={{n}}>{{n}}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="room">
+            <div>
+                방: <input type="text" name="room">
+            </div>
+            <input type="submit" value="주문하기">
+        </div>
+    </div>
+    </form>
+    <div>
+        <p>
+            {% if radio == None %}
+                <h5>음료 선택하세요.</h5>
+            {% endif %}
+        </p>
+    </div>
+</body>
+</html>
+
+
