@@ -19,7 +19,7 @@ def index():
 
 @app.route('/order', methods=['POST'])
 def order():
-    
+
     global pick
 
     pick['beverage'] = request.form['beverages']
@@ -32,7 +32,7 @@ def order():
 @app.route('/showqr', methods=['GET'])
 def showqr():
 
-    data = pick
+    data = pick['beverage']
     img = qrcode.make(data)
     bufferd = BytesIO()
     img.save(bufferd, format="JPEG")
