@@ -10,7 +10,7 @@ CORS(app)
 
 
 beverage = ['pepsi', 'demisoda apple', 'georgia max', 'georgia original', 'hot six']
-
+pick = dict()
 
 @app.route('/')
 def index():
@@ -21,17 +21,34 @@ def index():
 def order():
     beverage = request.form['beverages']
     room = request.form['room']
-    data = {'beverage': beverage, 'label': room}
-    
-    img = qrcode.make(data)
+    global pick
 
+    pick['beverage'] = beverage
+    pick['room'] = room
+
+   
+    return redirect(url_for('showqr'))
+    
+
+@app.route('/showqr', methods=['GET'])
+def showqr():
+
+    data = pick
+    img = qrcode.make(data)
     bufferd = BytesIO()
     img.save(bufferd, format="JPEG")
+
     image_string = base64.b64encode(bufferd.getvalue()).decode('utf-8')
+
     return render_template('showqr.html', img_data=image_string)
-    
 
 
+
+
+@app.route('/order', methods=['GET'])
+def order2():
+
+    return pick
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
