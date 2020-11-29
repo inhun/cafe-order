@@ -48,7 +48,7 @@
                 {% for n in beverage %}
                 <div class="aaaa" style="margin-left: 20%;">                    
                     <img class={{n}} src="https://choicafe.s3.ap-northeast-2.amazonaws.com/{{n}}.jpg" width="100"> 
-                    <input type="radio" name="beverages" value={{n}}>{{n}}
+                    <input type="radio" name="beverages" value='{{n}}'>{{n}}
                 </div>
                 {% endfor %}
             </div>
