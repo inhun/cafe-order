@@ -19,12 +19,11 @@ def index():
 
 @app.route('/order', methods=['POST'])
 def order():
-    beverage = request.form['beverages']
-    room = request.form['room']
+    
     global pick
 
-    pick['beverage'] = beverage
-    pick['room'] = room
+    pick['beverage'] = request.form['beverages']
+    pick['room'] = request.form['room']
 
    
     return redirect(url_for('showqr'))
