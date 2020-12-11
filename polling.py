@@ -8,7 +8,7 @@ import json
 order = dict()
 
 while(1):
-    res = requests.get('http://localhost:5000/order')
+    res = requests.get('http://13.209.49.61:5000/order')
     data = res.json()
     has_item = bool(data)
 
@@ -25,7 +25,7 @@ send['msg'] = order
 
 client = mqtt.Client()
 
-client.connect('192.168.43.7', 1883)
+client.connect('192.168.77.1', 1883)
 client.loop_start()
 client.publish('/supervisor', json.dumps(send), 1)
 

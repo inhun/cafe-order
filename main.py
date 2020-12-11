@@ -32,7 +32,8 @@ def order():
 @app.route('/showqr', methods=['GET'])
 def showqr():
 
-    data = pick['beverage']
+
+    data = pick
     img = qrcode.make(data)
     bufferd = BytesIO()
     img.save(bufferd, format="JPEG")
